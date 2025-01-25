@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
+<<<<<<< Updated upstream
+=======
+using UnityEngine.UI;
+using System.Collections.Generic;
+>>>>>>> Stashed changes
 using UnityEngine.SceneManagement;
+//using TMPro;
+
 
 namespace Unity.FPS.Game
 {
@@ -33,6 +40,25 @@ namespace Unity.FPS.Game
         float m_TimeLoadEndGameScene;
         string m_SceneToLoad;
 
+<<<<<<< Updated upstream
+=======
+        public GameObject player;
+        public List<GameObject> enemies = new List<GameObject>();
+        public List<GameObject> enemyPrefabs = new List<GameObject>();
+        public float spawnDistance;
+        public float spawnRange;
+        public float spawnHeightRange;
+        public float timeUntilSpawn = 0.5f;
+        public float timeUntilSpawnDefault = 0.5f;
+        public int gameScore;
+        public GameObject floorChunk;
+        public List<GameObject> floorChunks = new List<GameObject>();
+        public float timeSinceStart;
+        //public TextMeshProUGUI score;
+
+
+
+>>>>>>> Stashed changes
         void Awake()
         {
             EventManager.AddListener<AllObjectivesCompletedEvent>(OnAllObjectivesCompleted);
@@ -46,6 +72,10 @@ namespace Unity.FPS.Game
 
         void Update()
         {
+            //score.text = gameScore.ToString();
+
+            timeSinceStart += Time.deltaTime;
+
             if (GameIsEnding)
             {
                 float timeRatio = 1 - (m_TimeLoadEndGameScene - Time.time) / EndSceneLoadDelay;
@@ -60,6 +90,47 @@ namespace Unity.FPS.Game
                     GameIsEnding = false;
                 }
             }
+<<<<<<< Updated upstream
+=======
+
+            if (timeUntilSpawn <= 0f)
+            {
+                GameObject enemyToSpawn = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
+                enemies.Add(Instantiate(enemyToSpawn, new Vector3(player.transform.position.x + spawnDistance, UnityEngine.Random.Range(0, spawnHeightRange), UnityEngine.Random.Range(-spawnRange, spawnRange)), Quaternion.identity));
+                timeUntilSpawn = timeUntilSpawnDefault;
+                //spawn random enemy
+            }
+            else
+            {
+                timeUntilSpawn -= Time.deltaTime;
+                //reduce timeUntilSpawn
+            }
+
+            if (floorChunks.Count <= 1)
+            {
+                floorChunks.Add(Instantiate(floorChunk, new Vector3(floorChunks[0].transform.position.x + 90, -1, floorChunks[0].transform.position.z), Quaternion.identity));
+                //add another 90 x in front
+            }
+            else
+            {
+                int removeIndex = -1;
+                for (int i = 0; i < floorChunks.Count; i++)
+                {
+                    if (Mathf.Abs(floorChunks[i].transform.position.x - player.transform.position.x) > 100)
+                    {
+                        removeIndex = i;
+                    }
+                }
+                if (removeIndex != -1)
+                {
+                    GameObject toRemove = floorChunks[removeIndex];
+                    floorChunks.Remove(toRemove);
+                    Destroy(toRemove);
+                }
+                //if distance from either floorChunk is far away remove it and delete object
+            }
+
+>>>>>>> Stashed changes
         }
 
         void OnAllObjectivesCompleted(AllObjectivesCompletedEvent evt) => EndGame(true);
