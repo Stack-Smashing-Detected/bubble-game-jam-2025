@@ -11,10 +11,10 @@ namespace Unity.FPS.AI
         public Transform DetectionSourcePoint;
 
         [Tooltip("The max distance at which the enemy can see targets")]
-        public float DetectionRange = 20f;
+        public float DetectionRange = 25f;
 
         [Tooltip("The max distance at which the enemy can attack its target")]
-        public float AttackRange = 10f;
+        public float AttackRange = 25f;
 
         [Tooltip("Time before an enemy abandons a known target that it can't see anymore")]
         public float KnownTargetTimeout = 4f;
