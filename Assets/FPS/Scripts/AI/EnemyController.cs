@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Unity.FPS.AI
 {
@@ -34,13 +37,15 @@ namespace Unity.FPS.AI
 
         [Tooltip("Delay after death where the GameObject is destroyed (to allow for animation)")]
         public float DeathDuration = 0f;
-
-
+        
         [Header("Weapons Parameters")] [Tooltip("Allow weapon swapping for this enemy")]
         public bool SwapToNextWeapon = false;
 
         [Tooltip("Time delay between a weapon swap and the next attack")]
         public float DelayAfterWeaponSwap = 0f;
+
+        [Tooltip("Time delay between enemy attacks")]
+        public float DelayBetweenAttacks = 2f;
 
         [Header("Eye color")] [Tooltip("Material for the eye color")]
         public Material EyeColorMaterial;
@@ -113,6 +118,7 @@ namespace Unity.FPS.AI
         GameFlowManager m_GameFlowManager;
         bool m_WasDamagedThisFrame;
         float m_LastTimeWeaponSwapped = Mathf.NegativeInfinity;
+        private float m_TimeSinceLastAttack = Time.deltaTime;
         int m_CurrentWeaponIndex;
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
@@ -212,7 +218,6 @@ namespace Unity.FPS.AI
             {
                 data.Renderer.SetPropertyBlock(m_BodyFlashMaterialPropertyBlock, data.MaterialIndex);
             }
-
             m_WasDamagedThisFrame = false;
         }
 
@@ -403,9 +408,10 @@ namespace Unity.FPS.AI
                 m_Weapons[i].transform.forward = weaponForward;
             }
         }
-
+        
         public bool TryAtack(Vector3 enemyPosition)
         {
+            bool didFire = false;
             if (m_GameFlowManager.GameIsEnding)
                 return false;
 
@@ -414,8 +420,7 @@ namespace Unity.FPS.AI
             if ((m_LastTimeWeaponSwapped + DelayAfterWeaponSwap) >= Time.time)
                 return false;
 
-            // Shoot the weapon
-            bool didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
+            didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
 
             if (didFire && onAttack != null)
             {
@@ -427,9 +432,22 @@ namespace Unity.FPS.AI
                     SetCurrentWeapon(nextWeaponIndex);
                 }
             }
-
+            
             return didFire;
         }
+        
+        public bool AttackDelay(float timeSinceLastAttack){
+            Debug.Log($"{timeSinceLastAttack}");
+            if (timeSinceLastAttack >= DelayBetweenAttacks)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    
 
         public bool TryDropItem()
         {

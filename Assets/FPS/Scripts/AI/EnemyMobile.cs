@@ -1,4 +1,5 @@
-﻿using Unity.FPS.Game;
+﻿using System.Collections;
+using Unity.FPS.Game;
 using UnityEngine;
 
 namespace Unity.FPS.AI
@@ -19,6 +20,9 @@ namespace Unity.FPS.AI
         [Range(0f, 1f)]
         public float AttackStopDistanceRatio = 0.5f;
 
+        [Tooltip("Captures the time an attack action was made")]
+        public float LastAttack = Time.time;
+        
         [Tooltip("The random hit damage effects")]
         public ParticleSystem[] RandomHitSparks;
 
@@ -94,8 +98,8 @@ namespace Unity.FPS.AI
                     {
                         AiState = AIState.Follow;
                     }
-
                     break;
+              
             }
         }
 
@@ -126,7 +130,13 @@ namespace Unity.FPS.AI
                     }
 
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
-                    m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+
+                    float currentTime = LastAttack += Time.deltaTime;
+                    if (m_EnemyController.AttackDelay(currentTime))
+                    {
+                        LastAttack = 0f;
+                        m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                    }
                     break;
             }
         }
@@ -134,6 +144,7 @@ namespace Unity.FPS.AI
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);
+            
         }
 
         void OnDetectedTarget()
