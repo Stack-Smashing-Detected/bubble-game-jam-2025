@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-<<<<<<< Updated upstream
-=======
 using UnityEngine.UI;
 using System.Collections.Generic;
->>>>>>> Stashed changes
 using UnityEngine.SceneManagement;
 //using TMPro;
 
@@ -40,8 +37,6 @@ namespace Unity.FPS.Game
         float m_TimeLoadEndGameScene;
         string m_SceneToLoad;
 
-<<<<<<< Updated upstream
-=======
         public GameObject player;
         public List<GameObject> enemies = new List<GameObject>();
         public List<GameObject> enemyPrefabs = new List<GameObject>();
@@ -58,7 +53,6 @@ namespace Unity.FPS.Game
 
 
 
->>>>>>> Stashed changes
         void Awake()
         {
             EventManager.AddListener<AllObjectivesCompletedEvent>(OnAllObjectivesCompleted);
@@ -90,8 +84,6 @@ namespace Unity.FPS.Game
                     GameIsEnding = false;
                 }
             }
-<<<<<<< Updated upstream
-=======
 
             if (timeUntilSpawn <= 0f)
             {
@@ -130,7 +122,6 @@ namespace Unity.FPS.Game
                 //if distance from either floorChunk is far away remove it and delete object
             }
 
->>>>>>> Stashed changes
         }
 
         void OnAllObjectivesCompleted(AllObjectivesCompletedEvent evt) => EndGame(true);
