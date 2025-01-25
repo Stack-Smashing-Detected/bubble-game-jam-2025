@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace Unity.FPS.Game
@@ -33,6 +34,15 @@ namespace Unity.FPS.Game
         float m_TimeLoadEndGameScene;
         string m_SceneToLoad;
 
+        public GameObject player;
+        public List<GameObject> enemies = new List<GameObject>();
+        public List<GameObject> enemyPrefabs = new List<GameObject>();
+        public float spawnDistance;
+        public float spawnRange;
+        public float spawnHeightRange;
+        public float timeUntilSpawn = 0.5f;
+        public float timeUntilSpawnDefault = 0.5f;
+
         void Awake()
         {
             EventManager.AddListener<AllObjectivesCompletedEvent>(OnAllObjectivesCompleted);
@@ -60,6 +70,20 @@ namespace Unity.FPS.Game
                     GameIsEnding = false;
                 }
             }
+
+            if (timeUntilSpawn <= 0f)
+            {
+                GameObject enemyToSpawn = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
+                enemies.Add(Instantiate(enemyToSpawn, new Vector3(player.transform.position.x + spawnDistance, UnityEngine.Random.Range(-spawnHeightRange, spawnHeightRange), UnityEngine.Random.Range(-spawnRange, spawnRange)), Quaternion.identity));
+                timeUntilSpawn = timeUntilSpawnDefault;
+                //spawn random enemy
+            }
+            else
+            {
+                timeUntilSpawn -= Time.deltaTime;
+                //reduce timeUntilSpawn
+            }
+
         }
 
         void OnAllObjectivesCompleted(AllObjectivesCompletedEvent evt) => EndGame(true);
@@ -111,5 +135,7 @@ namespace Unity.FPS.Game
             EventManager.RemoveListener<AllObjectivesCompletedEvent>(OnAllObjectivesCompleted);
             EventManager.RemoveListener<PlayerDeathEvent>(OnPlayerDeath);
         }
+
+
     }
 }
