@@ -13,7 +13,8 @@ public class GuideCharacterAndCam : MonoBehaviour
     [SerializeField] private float m_StrafeSpeed = 4f;
     [SerializeField] private float m_HorizontalBound = 2f;
     [SerializeField] private float m_VerticalBound = 1f;
-    
+    public WeaponController playerGun;
+
     PlayerInputHandler m_InputHandler;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +37,8 @@ public class GuideCharacterAndCam : MonoBehaviour
         m_Character.transform.position += new Vector3(m_StrafeSpeed * input.x, m_StrafeSpeed * input.z, m_TravelSpeed) * Time.deltaTime;
 
         groundthing.transform.position = new Vector3(groundthing.transform.position.x, groundthing.transform.position.y, m_Character.transform.position.z);
+
+        
 
         // Keep character within bounds
         if (m_Character.transform.position.x > m_HorizontalBound)

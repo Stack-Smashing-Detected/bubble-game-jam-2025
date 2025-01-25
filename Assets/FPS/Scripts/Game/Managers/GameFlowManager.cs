@@ -88,7 +88,7 @@ namespace Unity.FPS.Game
             if (timeUntilSpawn <= 0f)
             {
                 GameObject enemyToSpawn = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
-                enemies.Add(Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-5f, spawnHeightRange -5f), player.transform.position.z + spawnDistance), Quaternion.identity));
+                enemies.Add(Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-4f, spawnHeightRange -5f), player.transform.position.z + spawnDistance), Quaternion.identity));
                 timeUntilSpawn = timeUntilSpawnDefault;
                 //spawn random enemy
             }

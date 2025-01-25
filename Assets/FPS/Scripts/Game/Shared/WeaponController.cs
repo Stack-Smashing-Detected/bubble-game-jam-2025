@@ -390,7 +390,7 @@ namespace Unity.FPS.Game
             }
         }
 
-        bool TryShoot()
+        public bool TryShoot()
         {
             if (m_CurrentAmmo >= 1f
                 && m_LastTimeShot + DelayBetweenShots < Time.time)
