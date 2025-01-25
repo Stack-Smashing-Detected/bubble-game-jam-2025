@@ -130,7 +130,10 @@ namespace Unity.FPS.AI
                     }
 
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
-
+                    
+                    // pursue the opposing actor
+                    m_EnemyController.PursuePlayer(transform.position, m_EnemyController.KnownDetectedTarget.transform.position);
+                    // attack the opposing actor
                     float currentTime = LastAttack += Time.deltaTime;
                     if (m_EnemyController.AttackDelay(currentTime))
                     {
@@ -146,7 +149,7 @@ namespace Unity.FPS.AI
             Animator.SetTrigger(k_AnimAttackParameter);
             
         }
-
+        
         void OnDetectedTarget()
         {
             if (AiState == AIState.Patrol)

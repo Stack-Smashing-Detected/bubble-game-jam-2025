@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.FPS.Game;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Unity.FPS.AI
 {
@@ -35,6 +38,12 @@ namespace Unity.FPS.AI
         [Tooltip("The speed at which the enemy rotates")]
         public float OrientationSpeed = 10f;
 
+        [Tooltip("The speed in which the enemy will pursue the player")]
+        public float PursueSpeed = 2f;
+
+        [Tooltip("The distance from the player where the enemy stops pursuit")]
+        public float StopPursuitRadius = 5f;
+        
         [Tooltip("Delay after death where the GameObject is destroyed (to allow for animation)")]
         public float DeathDuration = 0f;
         
@@ -257,6 +266,27 @@ namespace Unity.FPS.AI
             }
         }
 
+        public void PursuePlayer(Vector3 currentPosition, Vector3 targetPosition)
+        {
+            if (PursuitRange(currentPosition, targetPosition))
+            {
+                float inGameSpeed = PursueSpeed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(currentPosition, targetPosition, inGameSpeed);
+            }
+            
+            Debug.Log(transform.position);
+        }
+        
+        bool PursuitRange(Vector3 position, Vector3 mActorPosition)
+        {
+            float playerProximity = Vector3.Distance(position, mActorPosition);
+            if (playerProximity <= StopPursuitRadius)
+            {
+                return false;
+            }
+            return true;
+        }
+        
         public void OrientTowards(Vector3 lookPosition)
         {
             Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.up).normalized;
@@ -267,7 +297,7 @@ namespace Unity.FPS.AI
                     Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * OrientationSpeed);
             }
         }
-
+        
         bool IsPathValid()
         {
             return PatrolPath && PatrolPath.PathNodes.Count > 0;
