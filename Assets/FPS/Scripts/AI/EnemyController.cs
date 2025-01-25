@@ -352,6 +352,7 @@ namespace Unity.FPS.AI
 
         public void UpdatePathDestination(bool inverseOrder = false)
         {
+            Debug.Log(transform.position);
             if (IsPathValid())
             {
                 // Check if reached the path destination
