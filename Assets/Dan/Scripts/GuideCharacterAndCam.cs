@@ -7,6 +7,7 @@ public class GuideCharacterAndCam : MonoBehaviour
 {
     private GameObject m_Character;
     private Camera m_Camera;
+    public GameObject groundthing;
     [SerializeField] private float m_TravelSpeed = 10f;
     [SerializeField] private float m_CameraTrailDistance = 3f;
     [SerializeField] private float m_StrafeSpeed = 4f;
@@ -33,7 +34,9 @@ public class GuideCharacterAndCam : MonoBehaviour
         Vector3 input = m_InputHandler.GetMoveInput();
         
         m_Character.transform.position += new Vector3(m_StrafeSpeed * input.x, m_StrafeSpeed * input.z, m_TravelSpeed) * Time.deltaTime;
-        
+
+        groundthing.transform.position = new Vector3(groundthing.transform.position.x, groundthing.transform.position.y, m_Character.transform.position.z);
+
         // Keep character within bounds
         if (m_Character.transform.position.x > m_HorizontalBound)
         {

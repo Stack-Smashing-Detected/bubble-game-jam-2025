@@ -88,7 +88,7 @@ namespace Unity.FPS.Game
             if (timeUntilSpawn <= 0f)
             {
                 GameObject enemyToSpawn = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
-                enemies.Add(Instantiate(enemyToSpawn, new Vector3(player.transform.position.x + spawnDistance, UnityEngine.Random.Range(0, spawnHeightRange), UnityEngine.Random.Range(-spawnRange, spawnRange)), Quaternion.identity));
+                enemies.Add(Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-5f, spawnHeightRange -5f), player.transform.position.z + spawnDistance), Quaternion.identity));
                 timeUntilSpawn = timeUntilSpawnDefault;
                 //spawn random enemy
             }
@@ -100,7 +100,7 @@ namespace Unity.FPS.Game
 
             if (floorChunks.Count <= 1)
             {
-                floorChunks.Add(Instantiate(floorChunk, new Vector3(floorChunks[0].transform.position.x + 90, -1, floorChunks[0].transform.position.z), Quaternion.identity));
+                floorChunks.Add(Instantiate(floorChunk, new Vector3(floorChunks[0].transform.position.x, -5, floorChunks[0].transform.position.z + 90), Quaternion.identity));
                 //add another 90 x in front
             }
             else
@@ -108,7 +108,7 @@ namespace Unity.FPS.Game
                 int removeIndex = -1;
                 for (int i = 0; i < floorChunks.Count; i++)
                 {
-                    if (Mathf.Abs(floorChunks[i].transform.position.x - player.transform.position.x) > 100)
+                    if (Mathf.Abs(floorChunks[i].transform.position.z - player.transform.position.z) > 100)
                     {
                         removeIndex = i;
                     }

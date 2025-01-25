@@ -27,8 +27,8 @@ namespace Unity.FPS.Gameplay
         void Start()
         {
             m_PlayerCharacterController = GetComponent<PlayerCharacterController>();
-            DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, PlayerInputHandler>(
-                m_PlayerCharacterController, this, gameObject);
+            //DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, PlayerInputHandler>(
+                //m_PlayerCharacterController, this, gameObject);
             m_GameFlowManager = FindFirstObjectByType<GameFlowManager>();
             DebugUtility.HandleErrorIfNullFindObject<GameFlowManager, PlayerInputHandler>(m_GameFlowManager, this);
 
