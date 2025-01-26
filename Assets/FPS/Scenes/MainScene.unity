@@ -495,6 +495,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 492985577}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2962930924038866224, guid: 085bc715dac410845907ee829abc58f3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131386639}
     - targetCorrespondingSourceObject: {fileID: 7937165126719083729, guid: 085bc715dac410845907ee829abc58f3,
         type: 3}
       insertIndex: -1
@@ -513,6 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 206388328}
+  - component: {fileID: 206388329}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -542,6 +547,22 @@ RectTransform:
   m_AnchoredPosition: {x: 965, y: 537}
   m_SizeDelta: {x: -788, y: -400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &206388329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206388327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e094855044e1e48878baa7b0ac9410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CharacterStatus: {fileID: 2131386639}
+  m_AirSlider: {fileID: 867059058}
+  m_ScoreText: {fileID: 1598821439}
+  m_ScorePrefixText: 'SCOREEEEE:'
 --- !u!4 &218425204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2320371260222401683, guid: 1357d534d67e44349a4b7c67840165c7,
@@ -678,7 +699,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -8110,6 +8131,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 58619120}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2131386639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134726634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b00643ff470f040bca7bb9808896c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxAirSeconds: 90
+  m_AirRemainingSeconds: 90
+  m_SecondsOfAirToIncrease: 5
+  m_SecondsOfAirToRemove: 5
 --- !u!1001 &2729281212881330968
 PrefabInstance:
   m_ObjectHideFlags: 0

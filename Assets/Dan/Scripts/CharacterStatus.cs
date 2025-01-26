@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class CharacterStatus : MonoBehaviour
 {
+    public delegate void AirChangedDelegate(float airAdjustment);
+    public delegate void ScoreChangedDelegate(int scoreIncrease);
+
+    public event AirChangedDelegate OnGainedOrLostAir;
+    public event ScoreChangedDelegate OnGainedScore;
+    
     private int m_Score = 0;
     private float m_BulletFrequencyPercent = 50f;
     private float m_BulletFrequencyAdjustment = 10f;
@@ -23,23 +29,20 @@ public class CharacterStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_AirRemainingSeconds -= Time.deltaTime;
-        
-        // to do 
-        if (m_AirRemainingSeconds <= 0)
-        {
-            // do game over
-        }
+        AdjustAir(-Time.deltaTime);
+        OnGainedOrLostAir?.Invoke(m_AirRemainingSeconds/m_MaxAirSeconds);
     }
 
     public void IncreaseAir()
     {
         AdjustAir(m_SecondsOfAirToIncrease);
+        OnGainedOrLostAir?.Invoke(m_AirRemainingSeconds/m_MaxAirSeconds);
     }
 
     public void DecreaseAir()
     {
         AdjustAir(m_SecondsOfAirToRemove);
+        OnGainedOrLostAir?.Invoke(m_AirRemainingSeconds/m_MaxAirSeconds);
     }
 
     public void AdjustAir(float secondsAdjustment)
@@ -64,6 +67,7 @@ public class CharacterStatus : MonoBehaviour
     public void IncreaseScore(int scoreToAdd = 10)
     {
         m_Score += scoreToAdd;
+        OnGainedScore?.Invoke(m_Score);
     }
 
     public void IncreaseBulletFrequency()
