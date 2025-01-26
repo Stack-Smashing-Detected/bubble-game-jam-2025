@@ -127,7 +127,7 @@ namespace Unity.FPS.AI
         GameFlowManager m_GameFlowManager;
         bool m_WasDamagedThisFrame;
         float m_LastTimeWeaponSwapped = Mathf.NegativeInfinity;
-        private float m_TimeSinceLastAttack = Time.deltaTime;
+        private float m_TimeSinceLastAttack = 0;
         int m_CurrentWeaponIndex;
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;

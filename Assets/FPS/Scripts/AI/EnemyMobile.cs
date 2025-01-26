@@ -21,7 +21,7 @@ namespace Unity.FPS.AI
         public float AttackStopDistanceRatio = 0.5f;
 
         [Tooltip("Captures the time an attack action was made")]
-        public float LastAttack = Time.time;
+        public float LastAttack = 0;
         
         [Tooltip("The random hit damage effects")]
         public ParticleSystem[] RandomHitSparks;
