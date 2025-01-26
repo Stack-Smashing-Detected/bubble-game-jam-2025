@@ -22,7 +22,7 @@ namespace Unity.FPS.AI
             NumberOfEnemiesTotal++;
         }
 
-        public void UnregisterEnemy(EnemyController enemyKilled)
+        public void UnregisterDefeatedEnemy(EnemyController enemyKilled)
         {
             int enemiesRemainingNotification = NumberOfEnemiesRemaining - 1;
 
@@ -33,6 +33,14 @@ namespace Unity.FPS.AI
 
             // removes the enemy from the list, so that we can keep track of how many are left on the map
             Enemies.Remove(enemyKilled);
+        }
+        
+        /**
+         * Removes the enemy if they have gone out of bounds on the x-axis or z-axis. 
+         */
+        public void UnregisterDespawnedEnemy(EnemyController enemyDespawned)
+        {
+            Enemies.Remove(enemyDespawned);
         }
     }
 }
