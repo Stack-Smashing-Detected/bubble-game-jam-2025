@@ -36,7 +36,7 @@ public class Obstacle : MonoBehaviour
             else
             {
                 //Debug.Log("Killed a non bubble");
-                m_CharacterStatus.IncreaseScore();
+                m_CharacterStatus.IncreaseScore(score);
             }
 
             GetDestroyed();
@@ -48,6 +48,11 @@ public class Obstacle : MonoBehaviour
         if (bubble)
         {
             m_CharacterStatus.IncreaseAir();
+            GetDestroyed();
+        }
+        else if (collision.collider.gameObject.tag == "Player")
+        {
+            m_CharacterStatus.AdjustAir(-health);
             GetDestroyed();
         }
     }

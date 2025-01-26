@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6729a5cb4bf0c884fa83ba0ae07aba97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 35
+  health: 25
   effect: {fileID: 8637295149913848134, guid: 5141b2a8f4e40d340958d48557d26177, type: 3}
   bubble: 0
   forceYCoordinate: 0
   forcedYCoordinate: 0
-  score: 35
+  score: 25
 --- !u!135 &-576985614690686893
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2128639703825198668
 PrefabInstance:

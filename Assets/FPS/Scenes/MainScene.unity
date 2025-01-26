@@ -7129,7 +7129,7 @@ GameObject:
   - component: {fileID: 1377068644}
   m_Layer: 12
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8246,8 +8246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxAirSeconds: 90
   m_AirRemainingSeconds: 90
-  m_SecondsOfAirToIncrease: 5
+  m_SecondsOfAirToIncrease: 20
   m_SecondsOfAirToRemove: 5
+  m_AreDebugKeysOn: 0
 --- !u!1001 &2263813358421239158
 PrefabInstance:
   m_ObjectHideFlags: 0
