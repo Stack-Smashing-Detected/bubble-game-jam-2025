@@ -30,6 +30,8 @@ public class CharacterStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (m_AreDebugKeysOn)
         {
             if (Input.GetKeyDown(KeyCode.U))
@@ -50,6 +52,11 @@ public class CharacterStatus : MonoBehaviour
 
         AdjustAir(-Time.deltaTime);
         OnGainedOrLostAir?.Invoke(m_AirRemainingSeconds/m_MaxAirSeconds);
+
+        if (m_AirRemainingSeconds <= 0f)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Restart");
+        }
     }
 
     public void IncreaseAir()
