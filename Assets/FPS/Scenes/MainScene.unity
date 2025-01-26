@@ -370,6 +370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterAndCamHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 2962930924038866224, guid: 085bc715dac410845907ee829abc58f3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4313909289725029800, guid: 085bc715dac410845907ee829abc58f3,
         type: 3}
       propertyPath: m_IsTrigger
@@ -700,7 +705,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

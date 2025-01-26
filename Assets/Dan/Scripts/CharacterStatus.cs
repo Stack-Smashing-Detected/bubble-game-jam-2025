@@ -54,6 +54,7 @@ public class CharacterStatus : MonoBehaviour
 
     public void IncreaseAir()
     {
+        Debug.Log("IncreaseAir");
         AdjustAir(m_SecondsOfAirToIncrease);
         OnGainedOrLostAir?.Invoke(m_AirRemainingSeconds/m_MaxAirSeconds);
     }
@@ -85,6 +86,7 @@ public class CharacterStatus : MonoBehaviour
     
     public void IncreaseScore(int scoreToAdd = 10)
     {
+        Debug.Log("IncreaseScore");
         m_Score += scoreToAdd;
         OnGainedScore?.Invoke(m_Score);
     }
