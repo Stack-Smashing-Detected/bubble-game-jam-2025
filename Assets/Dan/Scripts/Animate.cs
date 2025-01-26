@@ -3,8 +3,8 @@ using UnityEngine.Rendering.Universal;
 
 public class Animate : MonoBehaviour
 {
-    private const string kXPosString = "x_pos";
-    private const string kYPosString = "y_pos";
+    private const string kXPosString = "pos_X";
+    private const string kYPosString = "pos_Y";
 
     [SerializeField] private GameObject m_CharacterAndCameraController;
     [SerializeField] private bool m_DoHackySpriteFlip = false;
