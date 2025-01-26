@@ -102,7 +102,7 @@ namespace Unity.FPS.AI
         MaterialPropertyBlock m_EyeColorMaterialPropertyBlock;
 
         int m_PathDestinationNodeIndex;
-        private float initialPosition;
+        private Vector3 initialPosition;
         EnemyManager m_EnemyManager;
         ActorsManager m_ActorsManager;
         Health m_Health;
@@ -139,7 +139,7 @@ namespace Unity.FPS.AI
             m_Health.OnDamaged += OnDamaged;
             
             // get entity's initial position
-            initialPosition = transform.position.x;
+            initialPosition = transform.position;
             
             foreach (var renderer in GetComponentsInChildren<Renderer>(true))
             {
@@ -201,8 +201,6 @@ namespace Unity.FPS.AI
             {
                 m_EnemyManager.UnregisterDespawnedEnemy(this);
             }
-
-            StopCoroutine(traversalRoutine);
         }
         
         void OnDamaged(float damage, GameObject damageSource)
@@ -240,7 +238,7 @@ namespace Unity.FPS.AI
             Destroy(gameObject, deathDuration);
         }
 
-        public string MoveBasedOnAxisPosition(Vector3 initialPosition)
+        public string MoveBasedOnAxisPosition()
         {
             Vector3 origin = new Vector3(0f, 0f, 0f);
             if (initialPosition.x > origin.x)

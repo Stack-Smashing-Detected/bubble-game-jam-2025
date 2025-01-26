@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 namespace Unity.FPS.AI
 {
     [RequireComponent(typeof(EnemyController))]
-    public class EnemyMobile : MonoBehaviour
+    public class EnemyBehaviour : MonoBehaviour
     {
 
         public Animator Animator;
@@ -30,7 +30,7 @@ namespace Unity.FPS.AI
         [Header("Sound")] public AudioClip MovementSound;
         public MinMaxFloat PitchDistortionMovementSpeed;
         
-        EnemyController m_EnemyController;
+        EnemyController _mEnemyController;
         AudioSource m_AudioSource;
         private EnemyManager m_EnemyManager;
 
@@ -44,46 +44,45 @@ namespace Unity.FPS.AI
 
         void Start()
         {
-            m_EnemyController = GetComponent<EnemyController>();
-            DebugUtility.HandleErrorIfNullGetComponent<EnemyController, EnemyMobile>(m_EnemyController, this,
+            _mEnemyController = GetComponent<EnemyController>();
+            DebugUtility.HandleErrorIfNullGetComponent<EnemyController, EnemyBehaviour>(_mEnemyController, this,
                 gameObject);
 
-            m_EnemyController.onAttack += OnAttack;
-            m_EnemyController.onDamaged += OnDamaged;
+            _mEnemyController.onAttack += OnAttack;
+            _mEnemyController.onDamaged += OnDamaged;
             
 
             // adding a audio source to play the movement sound on it
             m_AudioSource = GetComponent<AudioSource>();
-            DebugUtility.HandleErrorIfNullGetComponent<AudioSource, EnemyMobile>(m_AudioSource, this, gameObject);
+            DebugUtility.HandleErrorIfNullGetComponent<AudioSource, EnemyBehaviour>(m_AudioSource, this, gameObject);
             m_AudioSource.clip = MovementSound;
             m_AudioSource.Play();
             
             // detects initial position of the entity
             Vector3 initialPosition = transform.position;
-            direction = m_EnemyController.MoveBasedOnAxisPosition(initialPosition);
+            direction = _mEnemyController.MoveBasedOnAxisPosition();
         }
 
         void Update()
         {
             // Perform movement pattern
-            m_EnemyController.MoveEnemy(direction);
+            _mEnemyController.MoveEnemy(direction);
             // perform attack manoeuvre 
             float currentTime = LastAttack += Time.deltaTime;
-            if (m_EnemyController.AttackDelay(currentTime))
+            if (_mEnemyController.AttackDelay(currentTime))
             {
                 LastAttack = 0f;
-                m_EnemyController.TryAtack();
+                _mEnemyController.TryAtack();
             }
             
         }
-        
+
 
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);
-            
         }
-        
+
 
         void OnDamaged()
         {
