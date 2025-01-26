@@ -6,7 +6,17 @@ public class Obstacle : MonoBehaviour
     public float health = 1;
     public GameObject effect;
     public bool bubble;
+    public bool forceYCoordinate;
+    public int forcedYCoordinate;
+    public int score;
 
+    void Start()
+    {
+        if (forceYCoordinate)
+        {
+            transform.position = new Vector3(transform.position.x, forcedYCoordinate, transform.position.z);
+        }
+    }
 
     public void TakeDamage(float Damage)
     {
