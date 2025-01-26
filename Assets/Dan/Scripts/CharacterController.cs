@@ -3,7 +3,7 @@ using UnityEngine;
 using Unity.FPS.Game;
 using Unity.FPS.Gameplay;
         
-public class GuideCharacterAndCam : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     private GameObject m_Character;
     private Camera m_Camera;
@@ -43,11 +43,8 @@ public class GuideCharacterAndCam : MonoBehaviour
         Vector3 input = m_InputHandler.GetMoveInput();
 
         m_Character.transform.position += new Vector3(m_StrafeSpeed * input.x, m_StrafeSpeed * input.z, m_TravelSpeed) * Time.deltaTime;
-
         groundthing.transform.position = new Vector3(groundthing.transform.position.x, groundthing.transform.position.y, m_Character.transform.position.z);
-
         
-
         // Keep character within bounds
         if (m_Character.transform.position.x > m_HorizontalBound)
         {
@@ -68,4 +65,15 @@ public class GuideCharacterAndCam : MonoBehaviour
         
         m_Camera.transform.position = new Vector3(0, 0, m_Character.transform.position.z - m_CameraTrailDistance);  
     }
+
+    public float GetHorizontalBound()
+    {
+        return m_HorizontalBound;
+    }
+
+    public float GetVerticalBound()
+    {
+        return m_VerticalBound;
+    }
+    
 }
