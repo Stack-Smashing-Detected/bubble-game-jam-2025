@@ -49,6 +49,7 @@ namespace Unity.FPS.Game
         public GameObject floorChunk;
         public List<GameObject> floorChunks = new List<GameObject>();
         public float timeSinceStart;
+        public int secondsUntilGameEnds;
         //public TextMeshProUGUI score;
 
 
@@ -70,6 +71,11 @@ namespace Unity.FPS.Game
 
             timeSinceStart += Time.deltaTime;
 
+            if (timeSinceStart > secondsUntilGameEnds)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Victory");
+            }
+                
             if (GameIsEnding)
             {
                 float timeRatio = 1 - (m_TimeLoadEndGameScene - Time.time) / EndSceneLoadDelay;
