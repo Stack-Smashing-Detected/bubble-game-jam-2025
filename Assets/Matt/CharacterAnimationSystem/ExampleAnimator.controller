@@ -43,8 +43,40 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 92555ea1de27b8d40884da7962e91dca, type: 2}
+    m_Threshold: 0.11111111
+    m_Position: {x: -1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Blend
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 92555ea1de27b8d40884da7962e91dca, type: 2}
+    m_Threshold: 0.22222222
+    m_Position: {x: 0.5, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Blend
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 92555ea1de27b8d40884da7962e91dca, type: 2}
+    m_Threshold: 0.33333334
+    m_Position: {x: -0.5, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Blend
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 92555ea1de27b8d40884da7962e91dca, type: 2}
+    m_Threshold: 0.44444445
+    m_Position: {x: 1, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Blend
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 2081580f9329dd74f8244bbbdd1dd2b4, type: 2}
-    m_Threshold: 0.2
+    m_Threshold: 0.5555556
     m_Position: {x: 0, y: -0.9}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -52,7 +84,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: c7dcf9ee40cc8524eaed45e0e6c37e1a, type: 2}
-    m_Threshold: 0.4
+    m_Threshold: 0.6666667
     m_Position: {x: -0.5, y: -0.9}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -60,7 +92,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 98bbce097a45a9143a00c57d1387c6c6, type: 2}
-    m_Threshold: 0.6
+    m_Threshold: 0.7777778
     m_Position: {x: -1, y: -0.9}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -68,7 +100,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 9be11cfb87a9e1845bb415e091c1445f, type: 2}
-    m_Threshold: 0.8
+    m_Threshold: 0.8888889
     m_Position: {x: 0.5, y: -0.9}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -171,7 +203,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6069461840049380037}
-    m_Position: {x: 286.5359, y: 116.21109, z: 0}
+    m_Position: {x: 290, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

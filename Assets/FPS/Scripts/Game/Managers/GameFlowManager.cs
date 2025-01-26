@@ -69,6 +69,8 @@ namespace Unity.FPS.Game
         {
             //score.text = gameScore.ToString();
 
+            //for (int i = 0; i < )
+
             timeSinceStart += Time.deltaTime;
 
             if (timeSinceStart > secondsUntilGameEnds)
@@ -94,7 +96,9 @@ namespace Unity.FPS.Game
             if (timeUntilSpawn <= 0f)
             {
                 GameObject enemyToSpawn = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
-                enemies.Add(Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-4f, spawnHeightRange -5f), player.transform.position.z + spawnDistance), Quaternion.identity));
+                GameObject temp = Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-3f, spawnHeightRange - 5f), player.transform.position.z + spawnDistance), Quaternion.identity);
+                //Destroy(temp, 12f);
+                enemies.Add(temp);
                 timeUntilSpawn = timeUntilSpawnDefault;
                 //spawn random enemy
             }
