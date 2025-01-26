@@ -122,9 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6729a5cb4bf0c884fa83ba0ae07aba97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 15
   effect: {fileID: 8637295149913848134, guid: 5141b2a8f4e40d340958d48557d26177, type: 3}
-  bubble: 1
+  bubble: 0
+  forceYCoordinate: 0
+  forcedYCoordinate: 0
 --- !u!1 &8850658543502802942
 GameObject:
   m_ObjectHideFlags: 0
