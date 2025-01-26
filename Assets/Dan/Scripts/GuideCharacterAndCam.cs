@@ -16,7 +16,15 @@ public class GuideCharacterAndCam : MonoBehaviour
     public WeaponController playerGun;
 
     PlayerInputHandler m_InputHandler;
-    
+    // Add Player to the Actor List in Awake
+    void Awake()
+    {
+        ActorsManager actorsManager = GetComponent<ActorsManager>();
+        if (actorsManager != null)
+        {
+            actorsManager.SetPlayer(m_Character);
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
