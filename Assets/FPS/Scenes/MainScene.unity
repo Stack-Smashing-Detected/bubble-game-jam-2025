@@ -171,6 +171,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -7.18
       objectReference: {fileID: 0}
+    - target: {fileID: 2704394749380256868, guid: 085bc715dac410845907ee829abc58f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2962930924038866224, guid: 085bc715dac410845907ee829abc58f3,
         type: 3}
       propertyPath: m_Name
@@ -248,6 +253,11 @@ PrefabInstance:
       objectReference: {fileID: 444360368}
     - target: {fileID: 8275711804699680624, guid: 085bc715dac410845907ee829abc58f3,
         type: 3}
+      propertyPath: m_StrafeSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275711804699680624, guid: 085bc715dac410845907ee829abc58f3,
+        type: 3}
       propertyPath: m_VerticalBound
       value: 3.25
       objectReference: {fileID: 0}
@@ -259,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 8275711804699680624, guid: 085bc715dac410845907ee829abc58f3,
         type: 3}
       propertyPath: m_CameraTrailDistance
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
