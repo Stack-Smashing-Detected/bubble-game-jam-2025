@@ -8,6 +8,7 @@ public class Obstacle : MonoBehaviour
     public bool bubble;
     public bool forceYCoordinate;
     public int forcedYCoordinate;
+    public int score;
 
     void Start()
     {
