@@ -99,7 +99,7 @@ namespace Unity.FPS.Game
                 GameObject temp = Instantiate(enemyToSpawn, new Vector3(UnityEngine.Random.Range(-spawnRange, spawnRange), UnityEngine.Random.Range(-3f, spawnHeightRange - 5f), player.transform.position.z + spawnDistance), Quaternion.identity);
                 //Destroy(temp, 12f);
                 enemies.Add(temp);
-                timeUntilSpawn = timeUntilSpawnDefault;
+                timeUntilSpawn = timeUntilSpawnDefault - 90 * 0.015f;
                 //spawn random enemy
             }
             else

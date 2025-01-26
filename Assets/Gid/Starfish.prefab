@@ -127,6 +127,7 @@ MonoBehaviour:
   bubble: 0
   forceYCoordinate: 0
   forcedYCoordinate: 0
+  score: 5
 --- !u!1 &8850658543502802942
 GameObject:
   m_ObjectHideFlags: 0
