@@ -4,6 +4,10 @@ public class CharacterStatus : MonoBehaviour
 {
     private int m_Score = 0;
     private float m_BulletFrequencyPercent = 50f;
+    private float m_BulletFrequencyAdjustment = 10f;
+    private float m_MinBulletFrequencyPercent = 10f;
+    private float m_MaxBulletFrequencyPercent = 100f;
+    
     [SerializeField] private float m_MaxAirSeconds = 90f;
     [SerializeField] private float m_AirRemainingSeconds= 90f;
     [SerializeField] private float m_SecondsOfAirToIncrease = 5f;
@@ -44,11 +48,6 @@ public class CharacterStatus : MonoBehaviour
         ValidateAir();
     }
     
-    public void IncreaseScore(int scoreToAdd = 10)
-    {
-        m_Score += scoreToAdd;
-    }
-
     private void ValidateAir()
     {
         if (m_AirRemainingSeconds <= 0)
@@ -62,6 +61,36 @@ public class CharacterStatus : MonoBehaviour
         }
     }
     
+    public void IncreaseScore(int scoreToAdd = 10)
+    {
+        m_Score += scoreToAdd;
+    }
+
+    public void IncreaseBulletFrequency()
+    {
+        AdjustBulletFrequencyPercent(m_BulletFrequencyPercent);
+    }
+
+    public void DecreaseBulletFrequency()
+    {
+        AdjustBulletFrequencyPercent(-m_BulletFrequencyPercent);
+    }
+
+    public void AdjustBulletFrequencyPercent(float percentIncrease)
+    {
+        m_BulletFrequencyPercent += percentIncrease;
+        ValidateBulletFrequency();
+    }
     
-    
+    private void ValidateBulletFrequency()
+    {
+        if (m_BulletFrequencyPercent <= m_MinBulletFrequencyPercent)
+        {
+            m_BulletFrequencyPercent = m_MinBulletFrequencyPercent;
+        }
+        else if (m_BulletFrequencyPercent > 100f)
+        {
+            m_BulletFrequencyPercent = 100f;
+        }
+    }
 }
